@@ -1,0 +1,39 @@
+:root{
+  --bg: #0b1220;
+  --panel: rgba(255,255,255,0.03);
+  --muted: #9aa5b1;
+  --accent: #ff6b6b;
+  --glass: rgba(255,255,255,0.03);
+  --success: #22c55e;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,Arial;color:#e6eef6}
+html,body,#app{height:100%;margin:0;background:linear-gradient(180deg,#071021,#0b1220);}
+
+#app{display:grid;grid-template-columns:300px 1fr 360px;gap:18px;padding:18px;align-items:start}
+.glass{background:var(--panel);padding:14px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5)}
+.app-header{display:flex;gap:12px;align-items:center}
+.app-header h1{margin:0;font-size:20px}
+.user-block{display:flex;gap:10px;align-items:center}
+#user-avatar{width:46px;height:46px;border-radius:10px;background:#0f1724;display:flex;align-items:center;justify-content:center}
+input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit;outline:none}
+input::placeholder{color:var(--muted)}
+.row{display:flex;gap:8px;align-items:center}
+.btn{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer}
+.btn.light{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.btn.danger{background:#e55959}
+.small{font-size:12px}
+.muted{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);background:transparent;cursor:pointer}
+.chip.active{background:rgba(255,255,255,0.04)}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.search input{width:420px}
+.list-panel{margin-top:12px}
+#events-list{display:flex;flex-direction:column;gap:8px;max-height:28vh;overflow:auto;padding-right:8px}
+.event-card{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+.detail-area{min-height:200px}
+.separator{height:1px;background:rgba(255,255,255,0.03);margin:8px 0}
+.chat-window{height:200px;overflow:auto;border-radius:8px;padding:8px;background:rgba(255,255,255,0.02)}
+.hidden{display:none}
+small{font-size:12px}
+footer{font-size:12px}
