@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LitFinder — Parties</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- LEFT PANEL / HOME -->
+    <aside id="left-panel" class="glass">
+      <header class="app-header">
+        <h1>LitFinder</h1>
+        <div id="user-block" class="user-block">
+          <div id="user-avatar">👤</div>
+          <div>
+            <div id="user-name" class="muted">Not signed in</div>
+            <div id="user-email" class="muted small"></div>
+          </div>
+        </div>
+      </header>
+
+      <section id="auth-actions">
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+        <div class="row">
+          <button id="login-btn" class="btn primary">Login</button>
+          <button id="signup-btn" class="btn">Sign up</button>
+        </div>
+        <div class="row">
+          <button id="logout-btn" class="btn light hidden">Logout</button>
+          <button id="verify-btn" class="btn light hidden">Resend verification</button>
+        </div>
+      </section>
+
+      <section class="filters glass">
+        <h3>Filters</h3>
+        <div class="chips">
+          <button id="filter-all" class="chip active">All</button>
+          <button id="filter-nearby" class="chip">Nearby</button>
+          <button id="filter-promoted" class="chip">Promoted</button>
+          <button id="filter-mine" class="chip">My Parties</button>
+          <button id="filter-upcoming" class="chip">Upcoming</button>
+        </div>
+        <div class="small muted">Nearby radius (km)</div>
+        <input id="nearby-radius" type="number" value="5" min="1" />
+      </section>
+
+      <section id="create-quick" class="glass">
+        <h3>Create</h3>
+        <input id="quick-name" placeholder="Party title" />
+        <input id="quick-location" placeholder="Location label" />
+        <div class="row">
+          <button id="quick-create" class="btn primary">Quick Create</button>
+        </div>
+      </section>
+
+      <section id="host-dashboard" class="glass hidden">
+        <h3>Host Dashboard</h3>
+        <div id="host-actions">
+          <button id="manage-my-events" class="btn">Manage My Events</button>
+        </div>
+      </section>
+
+      <footer class="muted small glass">
+        <div>Built with Firebase & Leaflet</div>
+        <div id="version">v1.0</div>
+      </footer>
+    </aside>
+
+    <!-- MIDDLE / MAP & LIST -->
+    <main id="main" class="glass">
+      <div class="topbar">
+        <div class="search">
+          <input id="search" placeholder="Search parties, locations..." />
+        </div>
+        <div class="actions">
+          <button id="open-create" class="btn">Create +</button>
+          <button id="open-events" class="btn light">Events</button>
+        </div>
+      </div>
+
+      <div id="map" style="height: 55vh; border-radius:8px;"></div>
+
+      <section id="list-panel" class="list-panel">
+        <h3>Parties</h3>
+        <div id="events-list"></div>
+      </section>
+    </main>
+
+    <!-- RIGHT PANEL / DETAILS & Chat -->
+    <aside id="right-panel" class="glass">
+      <div id="detail-area" class="detail-area">
+        <div id="no-selection" class="muted">Select a party to view details</div>
+
+        <div id="party-detail" class="hidden">
+          <h2 id="detail-name"></h2>
+          <div id="detail-meta" class="muted small"></div>
+          <p id="detail-location"></p>
+          <div class="row">
+            <button id="btn-join" class="btn primary">Join</button>
+            <button id="btn-message" class="btn">Message Host</button>
+            <button id="btn-promote" class="btn light">Promote</button>
+            <button id="btn-report" class="btn light">Report</button>
+          </div>
+          <div class="separator"></div>
+
+          <div id="host-controls" class="muted small hidden">
+            <h4>Host Controls</h4>
+            <div class="row">
+              <button id="btn-edit" class="btn">Edit</button>
+              <button id="btn-delete" class="btn danger">Delete</button>
+              <button id="btn-toggle-promote" class="btn">Toggle Promote</button>
+            </div>
+          </div>
+
+          <div class="separator"></div>
+
+          <h4>Chat</h4>
+          <div id="chat-window" class="chat-window"></div>
+          <div class="row">
+            <input id="chat-input" placeholder="Say hi..." />
+            <button id="chat-send" class="btn">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="create-panel" class="hidden">
+        <h3>Create / Edit Party</h3>
+        <input id="event-name" placeholder="Party Title" />
+        <input id="event-location" placeholder="Location label" />
+        <div class="row">
+          <input id="event-lat" placeholder="Latitude (optional)" />
+          <input id="event-lng" placeholder="Longitude (optional)" />
+        </div>
+        <input id="event-time" type="datetime-local" />
+        <div class="row">
+          <button id="save-event" class="btn primary">Save</button>
+          <button id="cancel-create" class="btn light">Cancel</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- load firebase modules as modules -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
